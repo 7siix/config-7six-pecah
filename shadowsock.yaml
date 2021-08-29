@@ -1,0 +1,12 @@
+proxies:
+  - name: tiktok obfs sg
+    type: ss
+    server: sg-vpn.seno.my.id
+    port: 1000
+    cipher: aes-256-gcm
+    password: ss-sg
+    udp: true
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: tiktokcdn.com

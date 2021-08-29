@@ -1,0 +1,48 @@
+proxies:
+  - name: game id gcp
+    type: trojan
+    server: gcp.seno.my.id
+    port: 1443
+    password: trojanvpn
+    udp: true
+    sni: m.pubgmobile.com
+    alpn:
+       - h2
+       - http/1.1
+    skip-cert-verify: true
+
+  - name: game sg
+    type: trojan
+    server: sg-vpn.seno.my.id
+    port: 1443
+    password: senovpn
+    udp: true
+    sni: m.pubgmobile.com
+    alpn:
+       - h2
+       - http/1.1
+    skip-cert-verify: true
+
+  - name: conference id gcp
+    type: trojan
+    server: gcp.seno.my.id
+    port: 1443
+    password: trojanvpn
+    udp: true
+    sni: zoom.us
+    alpn:
+       - h2
+       - http/1.1
+    skip-cert-verify: true
+
+  - name: conference sg
+    type: trojan
+    server: sg-vpn.seno.my.id
+    port: 1443
+    password: senovpn
+    udp: true
+    sni: talkgadget.google.com
+    alpn:
+       - h2
+       - http/1.1
+    skip-cert-verify: true
