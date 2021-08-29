@@ -177,7 +177,7 @@ proxy-providers:
   7six vmess:
     type: http
     path: ./vmess.yaml
-    url: https://raw.githubusercontent.com/7siix/provider/main/vmess.yaml?token=AVL7QD2TKEOVMXTWHNENIJ3BFL72K
+    url: https://raw.githubusercontent.com/7siix/provider/main/vmess.yaml?token=AVL7QDY62ITPPAUTEUQEQI3BFMB3Q
     interval: 3600
     health-check:
       enable: true
@@ -188,7 +188,7 @@ proxy-providers:
   7six trojan:
     type: http
     path: ./trojan.yaml
-    url: https://raw.githubusercontent.com/7siix/provider/main/trojan.yaml?token=AVL7QD744MKIEIL6TUCRSTLBFL75W
+    url: https://raw.githubusercontent.com/7siix/provider/main/trojan.yaml?token=AVL7QDY7CMSO3QS5SL3IMWTBFMB6O
     interval: 3600
     health-check:
       enable: true
@@ -199,7 +199,7 @@ proxy-providers:
   7six shadowsock:
     type: http
     path: ./shadowsock.yaml
-    url: https://raw.githubusercontent.com/7siix/provider/main/shadowsock.yaml?token=AVL7QD3YBFZBDP5TVOMZM6TBFL77I
+    url: https://raw.githubusercontent.com/7siix/provider/main/shadowsock.yaml?token=AVL7QD3FSTHQMREWNMFYCZDBFMCAU
     interval: 3600
     health-check:
       enable: true
