@@ -1,41 +1,41 @@
 proxies:
-  - name: Opok Axis
+  - name: tiktok sg
     type: vmess
-    server: 172.67.73.5
-    port: 80
-    uuid: 3e023e42-70ee-4404-faad-bdad7bd013b0
+    server: sg-vpn.seno.my.id
+    port: 443
+    uuid: 1fe2d5b8-f03d-4da9-9a1e-21e22750b511
     alterId: 64
     cipher: auto
     udp: true
-    tls: false
+    tls: true
     skip-cert-verify: true
     servername: null
     network: ws
     ws-path: /seno
     ws-headers:
-      Host: sg-vpn.seno.my.id
-
-  - name: edukasi id gcp
+      Host: vt.tiktok.com
+      
+  - name: tiktok id
     type: vmess
-    server: 104.17.2.81
-    port: 80
-    uuid: d6c53fa3-3f82-4e21-8fed-fdc6ccaa975a
-    alterId: 32
+    server: cloudpro.romszz.fun
+    port: 443
+    uuid: 050ec1c7-4a32-42ff-9bde-1eb9a912c362
+    alterId: 64
     cipher: auto
     udp: true
-    tls: false
+    tls: true
     skip-cert-verify: true
     servername: null
     network: ws
-    ws-path: /v2ray
+    ws-path: /v2rayws
     ws-headers:
-      Host: gcp.seno.my.id
+      Host: vt.tiktok.com
 
   - name: edukasi sg
     type: vmess
     server: 104.17.2.81
     port: 80
-    uuid: 3e023e42-70ee-4404-faad-bdad7bd013b0
+    uuid: 1fe2d5b8-f03d-4da9-9a1e-21e22750b511
     alterId: 64
     cipher: auto
     udp: true
@@ -46,3 +46,35 @@ proxies:
     ws-path: /seno
     ws-headers:
       Host: sg-vpn.seno.my.id
+      
+  - name: edukasi id
+    type: vmess
+    server: 104.17.2.81
+    port: 80
+    uuid: 050ec1c7-4a32-42ff-9bde-1eb9a912c362
+    alterId: 64
+    cipher: auto
+    udp: true
+    tls: false
+    skip-cert-verify: true
+    servername: null
+    network: ws
+    ws-path: /v2rayws
+    ws-headers:
+      Host: cloudpro.romszz.fun
+      
+  - name: Spotify sg2
+    type: vmess
+    server: sg2-vpn.seno.my.id
+    port: 443
+    uuid: 25448906-fd7d-4240-a6a9-2e1f32ec6312
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: null
+    network: ws
+    ws-path: /v2ray
+    ws-headers:
+      Host: login5.spotify.com
