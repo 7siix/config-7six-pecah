@@ -6,123 +6,15 @@ allow-lan: true
 bind-address: "*"
 mode: rule
 log-level: info
-external-controller: '0.0.0.0:9090' 
-dns:
-  enable: true
-  listen: 127.0.0.1:6450
-  ipv6: false
-  default-nameserver: 
-    - 1.2.4.8
-    - 114.4.109.102
-    - 43.255.196.45
-    - 114.114.114.114
-    - 223.5.5.5
-    - 202.152.161.227
-    - 1.1.1.1
-    - 1.0.0.1
-    - 8.8.8.8
-    - 8.8.4.4
-    - 8.8.8.7
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    - 'swscan.apple.com'
-    - 'mesu.apple.com'
-    - '*.msftconnecttest.com'
-    - '*.msftncsi.com'
-    - 'time.*.com'
-    - 'time.*.gov'
-    - 'time.*.edu.id'
-    - 'time.*.apple.com'
-    - 'time1.*.com'
-    - 'time2.*.com'
-    - 'time3.*.com'
-    - 'time4.*.com'
-    - 'time5.*.com'
-    - 'time6.*.com'
-    - 'time7.*.com'
-    - 'ntp.*.com'
-    - 'ntp.*.com'
-    - 'ntp1.*.com'
-    - 'ntp2.*.com'
-    - 'ntp3.*.com'
-    - 'ntp4.*.com'
-    - 'ntp5.*.com'
-    - 'ntp6.*.com'
-    - 'ntp7.*.com'
-    - '*.time.id'
-    - '*.ntp.org.id'
-    - '+.pool.ntp.org'
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - 'xbox.*.microsoft.com'
-    - '+.xboxlive.com'
-    - 'localhost.ptlogin2.qq.com'
-    - 'proxy.golang.org'
-    - 'stun.*.*'
-    - 'stun.*.*.*'
-  nameserver: 
-    - 1.2.4.8
-    - 114.114.114.114
-    - 223.5.5.5
-    - 1.1.1.1
-    - 1.0.0.1
-    - 8.8.8.8
-    - 8.8.4.4
-    - 8.8.8.7
-  fallback: 
-    - tcp://1.0.0.1:53
-    - tcp://1.1.1.1:53
-    - tcp://8.8.8.8:53
-    - tcp://8.8.4.4:53
-    - tcp://8.8.8.7:53
-    - tls://1.0.0.1:443
-    - tls://1.1.1.1:443
-    - tls://8.8.8.8:443
-    - tls://8.8.4.4:443
-    - tls://8.8.8.7:443
-  fallback-filter: 
-  geoip: true
-  ipcidr: 
-    - 114.5.12.0/22
-    - 43.255.196.0/22
-    - 202.3.208.0/20
-    - 202.152.161.0/24
-    - 192.168.43.1/24
-    - 216.239.32.0/19
-    - 112.215.0.0/16
-    - 23.219.0.0/16
-    - 203.205.155.0/19
-    - 150.109.0.0/16
-    - 23.32.0.0/11
-    - 23.64.0.0/14
-    - 72.14.192.0/18
-    - 74.125.0.0/16
-    - 172.217.0.0/16
-    - 104.64.0.0/10
-  domain:
-    - www.google.com
-    - talkgadget.google.com 
-    - meet.google.com
-external-ui: folder
-tun:
-  enable: true
-secret: ""
-
-
+external-controller: 127.0.0.1:9090
 proxy-groups:
 - name: 7six
   type: select
   proxies:
   - vmess
   - Trojan
-  - shadowsock
   - Auto Vmess
   - Auto Trojan
-  - Auto shadowsock
   - LB vmess
   - LB Trojan
 
@@ -136,11 +28,6 @@ proxy-groups:
   use:
   - 7six trojan
 
-- name: shadowsock
-  type: select
-  use:
-  - 7six shadowsock
-
 - name: Auto Vmess
   type: url-test
   tolerance: 50
@@ -152,12 +39,6 @@ proxy-groups:
   tolerance: 50
   use:
   - 7six trojan
-
-- name: Auto shadowsock
-  type: url-test
-  tolerance: 50
-  use:
-  - 7six shadowsock
 
 - name: LB vmess
   type: load-balance
@@ -175,32 +56,17 @@ proxy-groups:
 
 proxy-providers:
   7six vmess:
-    type: http
+    type: file
     path: ./vmess.yaml
-    url: https://raw.githubusercontent.com/7siix/provider/main/vmess.yaml?token=AVL7QDZML6DCVKQS46BTTWDBFMDQC
-    interval: 3600
     health-check:
       enable: true
       interval: 300
       lazy: true
       url: http://www.gstatic.com/generate_204
-
+      
   7six trojan:
-    type: http
+    type: file
     path: ./trojan.yaml
-    url: https://raw.githubusercontent.com/7siix/provider/main/trojan.yaml?token=AVL7QD4UA6VMVOP4DJMJCKLBFMDSC
-    interval: 3600
-    health-check:
-      enable: true
-      interval: 300
-      lazy: true
-      url: http://www.gstatic.com/generate_204
-
-  7six shadowsock:
-    type: http
-    path: ./shadowsock.yaml
-    url: https://raw.githubusercontent.com/7siix/provider/main/shadowsock.yaml?token=AVL7QD2QKCEI24ISY2WVB5TBFMDTY
-    interval: 3600
     health-check:
       enable: true
       interval: 300
@@ -209,11 +75,9 @@ proxy-providers:
 
 rule-providers:
   Adblock :
-    type: http
     behavior: domain
-    url: https://raw.githubusercontent.com/7siix/provider/main/adblock.yaml?token=AVL7QDYLWDTUGS64IC2VTZDBFMDWM
-    path: ./ruleset/adblock.yaml
-    interval: 86400
+    type: file
+    path: ./adblock.yaml
 
 rules:
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
