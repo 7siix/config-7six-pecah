@@ -1,17 +1,5 @@
 proxies:
-  - name: game id gcp
-    type: trojan
-    server: gcp.seno.my.id
-    port: 1443
-    password: trojanvpn
-    udp: true
-    sni: m.pubgmobile.com
-    alpn:
-       - h2
-       - http/1.1
-    skip-cert-verify: true
-
-  - name: game sg
+  - name: game sg1
     type: trojan
     server: sg-vpn.seno.my.id
     port: 1443
@@ -23,25 +11,37 @@ proxies:
        - http/1.1
     skip-cert-verify: true
 
-  - name: conference id gcp
+  - name: game sg2
     type: trojan
-    server: gcp.seno.my.id
+    server: sg2-vpn.seno.my.id
     port: 1443
-    password: trojanvpn
+    password: senovpn
     udp: true
-    sni: zoom.us
+    sni: m.pubgmobile.com
     alpn:
        - h2
        - http/1.1
     skip-cert-verify: true
 
-  - name: conference sg
+  - name: conference sg1
     type: trojan
     server: sg-vpn.seno.my.id
     port: 1443
     password: senovpn
     udp: true
     sni: talkgadget.google.com
+    alpn:
+       - h2
+       - http/1.1
+    skip-cert-verify: true
+
+  - name: tiktok sg1
+    type: trojan
+    server: sg-vpn.seno.my.id
+    port: 1443
+    password: senovpn
+    udp: true
+    sni: vt.tiktok.com
     alpn:
        - h2
        - http/1.1
