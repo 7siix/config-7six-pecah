@@ -56,17 +56,21 @@ proxy-groups:
 
 proxy-providers:
   7six vmess:
-    type: file
+    type: http
     path: ./vmess.yaml
+    url: https://raw.githubusercontent.com/7siix/provider/main/vmess.yaml?token=AVL7QD75S3GGMPQM7WLHOHDBGZNU4
+    interval: 3600
     health-check:
       enable: true
       interval: 300
       lazy: true
       url: http://www.gstatic.com/generate_204
-      
+
   7six trojan:
-    type: file
+    type: http
     path: ./trojan.yaml
+    url: https://raw.githubusercontent.com/7siix/provider/main/trojan.yaml?token=AVL7QD4U2L7EXMBWEW23W53BGZNXU
+    interval: 3600
     health-check:
       enable: true
       interval: 300
