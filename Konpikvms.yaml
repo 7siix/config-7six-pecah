@@ -13,7 +13,7 @@ proxies:
     network: ws
     ws-path: /seno
     ws-headers:
-      Host: vt.tiktok.com
+      Host: mon.tiktokv.com
       
   - name: tiktok id
     type: vmess
@@ -29,7 +29,7 @@ proxies:
     network: ws
     ws-path: /v2rayws
     ws-headers:
-      Host: vt.tiktok.com
+      Host: mon.tiktokv.com
 
   - name: edukasi sg
     type: vmess
