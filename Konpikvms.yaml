@@ -13,7 +13,7 @@ proxies:
     network: ws
     ws-path: /seno
     ws-headers:
-      Host: mon.tiktokv.com
+      Host: vt.tiktok.com
       
   - name: tiktok id
     type: vmess
@@ -29,7 +29,7 @@ proxies:
     network: ws
     ws-path: /v2rayws
     ws-headers:
-      Host: mon.tiktokv.com
+      Host: vt.tiktok.com
 
   - name: edukasi sg
     type: vmess
@@ -63,7 +63,7 @@ proxies:
     ws-headers:
       Host: cloudpro.romszz.fun
       
-  - name: Spotify sg2
+  - name: tiktok sg2
     type: vmess
     server: sg2-vpn.seno.my.id
     port: 443
@@ -77,4 +77,4 @@ proxies:
     network: ws
     ws-path: /v2ray
     ws-headers:
-      Host: login5.spotify.com
+      Host: vt.tiktok.com
