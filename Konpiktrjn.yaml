@@ -11,25 +11,13 @@ proxies:
        - http/1.1
     skip-cert-verify: true
 
-  - name: edukasi sg1
+  - name: tiktok sg1
     type: trojan
     server: sg-vpn.seno.my.id
     port: 1443
     password: senovpn
     udp: true
-    sni: 104.17.2.81
-    alpn:
-       - h2
-       - http/1.1
-    skip-cert-verify: true
-
-  - name: tiktok sg1
-    type: trojan
-    server: vt.tiktok.com
-    port: 1443
-    password: senovpn
-    udp: true
-    sni: sg-vpn.seno.my.id
+    sni: vt.tiktok.com
     alpn:
        - h2
        - http/1.1
