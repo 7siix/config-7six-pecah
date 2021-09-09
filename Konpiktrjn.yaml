@@ -23,13 +23,13 @@ proxies:
        - http/1.1
     skip-cert-verify: true
 
-  - name: conference sg1
+  - name: edukasi sg1
     type: trojan
     server: sg-vpn.seno.my.id
     port: 1443
     password: senovpn
     udp: true
-    sni: talkgadget.google.com
+    sni: 104.17.2.81
     alpn:
        - h2
        - http/1.1
