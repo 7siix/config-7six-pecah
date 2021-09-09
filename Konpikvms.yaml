@@ -4,7 +4,7 @@ proxies:
     server: sg-vpn.seno.my.id
     port: 443
     uuid: 1fe2d5b8-f03d-4da9-9a1e-21e22750b511
-    alterId: 64
+    alterId: 32
     cipher: auto
     udp: true
     tls: true
@@ -36,7 +36,7 @@ proxies:
     server: 104.17.2.81
     port: 80
     uuid: 1fe2d5b8-f03d-4da9-9a1e-21e22750b511
-    alterId: 64
+    alterId: 32
     cipher: auto
     udp: true
     tls: false
@@ -62,19 +62,3 @@ proxies:
     ws-path: /v2rayws
     ws-headers:
       Host: cloudpro.romszz.fun
-      
-  - name: tiktok sg2
-    type: vmess
-    server: sg2-vpn.seno.my.id
-    port: 443
-    uuid: 25448906-fd7d-4240-a6a9-2e1f32ec6312
-    alterId: 32
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: true
-    servername: null
-    network: ws
-    ws-path: /v2ray
-    ws-headers:
-      Host: vt.tiktok.com
