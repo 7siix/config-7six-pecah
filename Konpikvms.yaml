@@ -1,7 +1,7 @@
 proxies:
   - name: tiktok sg
     type: vmess
-    server: sg-vpn.seno.my.id
+    server: 35.219.10.130
     port: 443
     uuid: 1fe2d5b8-f03d-4da9-9a1e-21e22750b511
     alterId: 32
@@ -45,7 +45,7 @@ proxies:
     network: ws
     ws-path: /seno
     ws-headers:
-      Host: sg-vpn.seno.my.id
+      Host: 35.219.10.130
       
   - name: edukasi id
     type: vmess
