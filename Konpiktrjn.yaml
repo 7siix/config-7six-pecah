@@ -1,7 +1,7 @@
 proxies:
   - name: game sg1
     type: trojan
-    server: sg-vpn.seno.my.id
+    server: 35.219.10.130
     port: 1443
     password: senovpn
     udp: true
@@ -13,7 +13,7 @@ proxies:
 
   - name: tiktok sg1
     type: trojan
-    server: sg-vpn.seno.my.id
+    server: 35.219.10.130
     port: 1443
     password: senovpn
     udp: true
