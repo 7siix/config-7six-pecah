@@ -31,56 +31,59 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
 proxy-groups:
-- name: 7six
+- name: proxy
   type: select
   proxies:
-  - vmess
-  - Trojan
+  - 7six (http)
+  - relay
   - Auto Vmess
   - Auto Trojan
   - LB vmess
   - LB Trojan
 
-- name: vmess
+- name: 7six (http)
   type: select
   use:
-  - 7six vmess
+    - 7six Provider 1
+    - 7six Provider 2
+  proxies:
+    - DIRECT
 
-- name: Trojan
-  type: select
-  use:
-  - 7six trojan
-
+- name: relay
+  type: relay
+  proxies:
+    - 7six (http)
+  
 - name: Auto Vmess
   type: url-test
   tolerance: 50
   use:
-  - 7six vmess
+  - 7six Provider 1
 
 - name: Auto Trojan
   type: url-test
   tolerance: 50
   use:
-  - 7six trojan
+  - 7six Provider 2
 
 - name: LB vmess
   type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
-  - 7six vmess
+  - 7six Provider 1
 
 - name: LB Trojan
   type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
-  - 7six trojan
+  - 7six Provider 2
 
 proxy-providers:
-  7six vmess:
+  7six Provider 1:
     type: http
-    path: ./vmess.yaml
+    path: ./7six.yaml
     url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/Konpikvms.yaml
     interval: 3600
     health-check:
@@ -89,9 +92,9 @@ proxy-providers:
       lazy: true
       url: http://www.gstatic.com/generate_204
 
-  7six trojan:
+  7six Provider 2:
     type: http
-    path: ./trojan.yaml
+    path: ./7sixx.yaml
     url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/Konpiktrjn.yaml
     interval: 3600
     health-check:
@@ -104,13 +107,13 @@ rule-providers:
   Adblock :
     type: http
     behavior: domain
-    url: https://raw.githubusercontent.com/7siix/punya76/main/adblock.txt
+    url: https://raw.githubusercontent.com/7siix/punya76/main/adblock.yaml
     path: ./ruleset/adblock.yaml
     interval: 86400
   LAN:
     type: http
     behavior: ipcidr
-    url: https://raw.githubusercontent.com/7siix/punya76/main/LAN.txt
+    url: https://raw.githubusercontent.com/7siix/punya76/main/LAN.yaml
     path: ./ruleset/LAN.yaml
     interval: 86400
     
@@ -147,7 +150,7 @@ rules:
   - SRC-PORT,7777,DIRECT
   - RULE-SET,Adblock,REJECT
   - RULE-SET,LAN,DIRECT,no-resolve
-  - MATCH,7six
+  - MATCH,proxy
 #    ╔══╗═════╔╗═════
 #    ╚╗╔╬═╦═╦═╣╠╦╦╦╦╗
 #    ═║║║╩╣║║╬║═╣║║║║
