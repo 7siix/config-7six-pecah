@@ -31,37 +31,39 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
 proxy-groups:
+- name: 7six
+  type: select
+  use:
+    - 7six Provider 1
+    - 7six Provider 2
+    
 - name: proxy
   type: select
   proxies:
-  - 7six (http)
+  - 7six
   - relay
   - Auto Vmess
   - Auto Trojan
   - LB vmess
   - LB Trojan
 
-- name: 7six (http)
-  type: select
-  use:
-    - 7six Provider 1
-    - 7six Provider 2
-  proxies:
-    - DIRECT
-
 - name: relay
   type: relay
   proxies:
-    - 7six (http)
+    - 7six
   
 - name: Auto Vmess
   type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
   tolerance: 50
   use:
   - 7six Provider 1
 
 - name: Auto Trojan
   type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
   tolerance: 50
   use:
   - 7six Provider 2
@@ -85,7 +87,7 @@ proxy-providers:
     type: http
     path: ./7six.yaml
     url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/Konpikvms.yaml
-    interval: 3600
+    interval: 900
     health-check:
       enable: true
       interval: 300
@@ -96,7 +98,7 @@ proxy-providers:
     type: http
     path: ./7sixx.yaml
     url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/Konpiktrjn.yaml
-    interval: 3600
+    interval: 900
     health-check:
       enable: true
       interval: 300
