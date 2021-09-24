@@ -16,20 +16,30 @@ log-level: info
 ipv6: false
 external-controller: 127.0.0.1:9090
 external-ui: folder
-interface-name: en0
+interface-name: 7six
 dns:
   enable: true
   listen: 0.0.0.0:53
   default-nameserver:
-    - 1.1.1.1
-    - 1.0.0.1
+    - 8.8.8.8
+    - 8.8.4.4
+    - 8.26.56.26
+    - 8.20.247.20
   nameserver:
-    - 1.1.1.1 
-    - 1.0.0.1 
+    - 114.114.114.114
+    - 119.29.29.29
+    - https://dns.google/dns-query
     - tls://dns.rubyfish.cn:853 
-    - https://1.1.1.1/dns-query 
+    - tls://8.8.8.8:853
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 8.8.8.8:53
+    - tcp://8.8.8.8:53
+  auto-route: true
 proxy-groups:
 - name: 7six
   type: select
@@ -118,7 +128,18 @@ rule-providers:
     url: https://raw.githubusercontent.com/7siix/punya76/main/LAN.txt
     path: ./ruleset/LAN.yaml
     interval: 86400
-    
+  google:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt
+    path: ./ruleset/google.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt
+    path: ./ruleset/private.yaml
+    interval: 86400
 rules:
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
@@ -143,15 +164,43 @@ rules:
   - DOMAIN-KEYWORD,adservice,REJECT
   - DOMAIN-KEYWORD,analytics,REJECT
   - DOMAIN-KEYWORD,analysis,REJECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - PROCESS-NAME,v2ray,DIRECT
+  - PROCESS-NAME,xray,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,trojan,DIRECT
+  - PROCESS-NAME,trojan-go,DIRECT
+  - PROCESS-NAME,ss-local,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,leaf,DIRECT
+  - PROCESS-NAME,Surge,DIRECT
+  - PROCESS-NAME,Surge 2,DIRECT
+  - PROCESS-NAME,Surge 3,DIRECT
+  - PROCESS-NAME,Surge 4,DIRECT
+  - PROCESS-NAME,Surge%202,DIRECT
+  - PROCESS-NAME,Surge%203,DIRECT
+  - PROCESS-NAME,Surge%204,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qBittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
   - SRC-IP-CIDR,192.168.1.201/32,DIRECT
   - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
   - GEOIP,IR,DIRECT
   - IP-CIDR,127.0.0.0/8,DIRECT
-  - GEOIP,CN,DIRECT
   - DST-PORT,80,DIRECT
   - SRC-PORT,7777,DIRECT
   - RULE-SET,Adblock,REJECT
   - RULE-SET,LAN,DIRECT,no-resolve
+  - RULE-SET,google,DIRECT
+  - RULE-SET,private,DIRECT
   - MATCH,proxy
 #    ╔══╗═════╔╗═════
 #    ╚╗╔╬═╦═╦═╣╠╦╦╦╦╗
