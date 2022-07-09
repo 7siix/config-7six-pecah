@@ -1,20 +1,21 @@
 proxies:
-- name: OCEAN SG
-  server: zoomappdocs.zoom.us
+- name: Game iD ocean
+  server: 104.18.12.120
   port: 80
   type: vless
-  uuid: ec2c2322-6528-4f66-ad04-dd8dbaf83346
+  uuid: 33d32a4a-5624-4636-9971-34cd984a4a9c
   cipher: auto
   tls: false
   skip-cert-verify: true
-  servername: sg2-ws.xvless.xyz
+  servername: id3.v2vless.xyz
   network: ws
   ws-opts:
-    path: /websocket
+    path: /vless
     headers:
-      Host: sg2-ws.xvless.xyz
+      Host: id3.v2vless.xyz
   udp: true
-- name: CONTOH VLESS GRPC
+
+- name: null
   server: api.qiscus.com
   port: 8443
   type: vless
