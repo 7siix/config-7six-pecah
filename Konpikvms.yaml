@@ -1,19 +1,19 @@
 proxies:
-  - name: tiktok sg
+  - name: iLped sg
     type: vmess
-    server: sgdo.seno.my.id
-    port: 443
-    uuid: 0eec96e7-b3eb-4874-86df-f75d8c39204c
-    alterId: 32
+    server: 104.18.24.139
+    port: 80
+    uuid: bf356d09-578f-418f-8844-0a2736a9d949
+    alterId: 0
     cipher: auto
     udp: true
-    tls: true
+    tls: false
     skip-cert-verify: true
     servername: null
     network: ws
-    ws-path: /v2ray
+    ws-path: /sshocean
     ws-headers:
-      Host: vt.tiktok.com
+      Host: sg2.v2rayserv.com
       
   - name: tiktok id
     type: vmess
