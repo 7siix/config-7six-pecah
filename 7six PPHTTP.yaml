@@ -46,6 +46,7 @@ proxy-groups:
   use:
     - 7six Provider 1
     - 7six Provider 2
+    - 7six Provider 3
     
 - name: proxy
   type: select
@@ -56,6 +57,7 @@ proxy-groups:
   - Auto Trojan
   - LB vmess
   - LB Trojan
+  - LB Vless
 
 - name: relay
   type: relay
@@ -69,7 +71,6 @@ proxy-groups:
   tolerance: 50
   use:
   - 7six Provider 1
-
 - name: Auto Trojan
   type: url-test
   url: http://www.gstatic.com/generate_204
@@ -77,6 +78,13 @@ proxy-groups:
   tolerance: 50
   use:
   - 7six Provider 2
+- name: Auto Vless
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  use:
+  - 7six Provider 3
 
 - name: LB vmess
   type: load-balance
@@ -84,13 +92,18 @@ proxy-groups:
   disable-udp: false
   use:
   - 7six Provider 1
-
 - name: LB Trojan
   type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
   - 7six Provider 2
+- name: LB Vless
+  type: load-balance
+  strategy: consistent-hashing
+  disable-udp: false
+  use:
+  - 7six Provider 3
 
 proxy-providers:
   7six Provider 1:
@@ -108,6 +121,16 @@ proxy-providers:
     type: http
     path: ./7sixx.yaml
     url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/Konpiktrjn.yaml
+    interval: 900
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://www.gstatic.com/generate_204
+  7six Provider 3:
+    type: http
+    path: ./7sixxx.yaml
+    url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/konpikVless.yaml
     interval: 900
     health-check:
       enable: true
