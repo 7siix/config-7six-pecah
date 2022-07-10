@@ -46,7 +46,7 @@ proxy-groups:
   use:
     - 7six Provider 1
     - 7six Provider 2
-    - 7six Provider 3
+ #   - 7six Provider 3
     
 - name: proxy
   type: select
@@ -57,7 +57,7 @@ proxy-groups:
   - Auto Trojan
   - LB vmess
   - LB Trojan
-  - LB Vless
+ # - LB Vless
 
 - name: relay
   type: relay
@@ -98,7 +98,7 @@ proxy-groups:
   disable-udp: false
   use:
   - 7six Provider 2
-- name: LB Vless
+#- name: LB Vless
   type: load-balance
   strategy: consistent-hashing
   disable-udp: false
@@ -127,7 +127,7 @@ proxy-providers:
       interval: 300
       lazy: true
       url: http://www.gstatic.com/generate_204
-  7six Provider 3:
+#  7six Provider 3:
     type: http
     path: ./7sixxx.yaml
     url: https://raw.githubusercontent.com/7siix/config-7six-pecah/main/konpikVless.yaml
