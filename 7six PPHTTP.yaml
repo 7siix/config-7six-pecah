@@ -78,7 +78,7 @@ proxy-groups:
   tolerance: 50
   use:
   - 7six Provider 2
-- name: Auto Vless
+#- name: Auto Vless
   type: url-test
   url: http://www.gstatic.com/generate_204
   interval: 300
