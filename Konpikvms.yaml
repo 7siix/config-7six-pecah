@@ -1,32 +1,19 @@
 proxies:
-  - name: iLped ocean sg
-    type: vmess
-    server: 104.18.24.139
-    port: 80
-    uuid: bf356d09-578f-418f-8844-0a2736a9d949
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    servername: null
-    network: ws
-    ws-path: /sshocean
-    ws-headers:
-      Host: sg2.v2rayserv.com
-      
-  - name: game oceanid
-    type: vmess
-    server: 104.18.12.120
-    port: 80
-    uuid: bf356d09-578f-418f-8844-0a2736a9d949
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: false
-    skip-cert-verify: true
-    servername: null
-    network: ws
-    ws-path: /sshocean
-    ws-headers:
-      Host: sg2.v2rayserv.com
+- name: iLped SG SSHKIT
+  server: 104.18.24.139
+  port: 80
+  type: vmess
+  uuid: 6fea1649-425b-4092-bf53-29792152c925
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  servername: sg1-v2ray.sshkit.org
+  network: ws
+  ws-opts:
+   path: /sshkit/5206194863/62c7702a0ea8b/
+   headers:
+    Host: sg1-v2ray.sshkit.org
+  
+
