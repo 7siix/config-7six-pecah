@@ -115,18 +115,6 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
 
 rule-providers:
-  Proxy-ilped:
-    type: http
-    behavior: domain
-    url: "https://raw.githubusercontent.com/7siix/punya76/main/Proxy_ilped.yaml"
-    path: ./ruleset/ilped.yaml
-    interval: 86400
-  Direct-game:
-    type: http
-    behavior: domain
-    url: "https://raw.githubusercontent.com/7siix/punya76/main/Direct.yaml"
-    path: ./ruleset/Direct.yaml
-    interval: 86400
   IP-CIDR:
     type: http
     behavior: domain
@@ -150,8 +138,6 @@ rules:
   - IP-CIDR,127.0.0.0/8,DIRECT
   - DST-PORT,80,DIRECT
   - SRC-PORT,7777,DIRECT
-  - RULE-SET,Proxy-ilped,Auto Vmess
-  - RULE-SET,Direct-game,DIRECT
   - RULE-SET,IP-CIDR,DIRECT,no-resolve
   - RULE-SET,Reject,REJECT
   - MATCH,proxy
