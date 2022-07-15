@@ -114,13 +114,19 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
 
 rule-providers:
-  Aplikasi:
+  Proxy-ilped:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/7siix/punya76/main/Aplikasi.yaml"
-    path: ./ruleset/Aplikasi.yaml
+    url: "https://raw.githubusercontent.com/7siix/punya76/main/Proxy_ilped.yaml"
+    path: ./ruleset/ilped.yaml
     interval: 86400
 
+  Direct-game:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/7siix/punya76/main/Direct.yaml"
+    path: ./ruleset/Aplikasi.yaml
+    interval: 86400
 rules:
   - PROCESS-NAME,com.mobile.legends,DIRECT
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
